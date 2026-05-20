@@ -47,7 +47,14 @@ nav {
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: var(--bg-dark); }
 .logo span { color: var(--gold); }
 .nav-links a {
@@ -147,15 +154,74 @@ nav {
 .skill-list li { margin-bottom: 10px; font-size: 0.9rem; position: relative; padding-left: 20px; }
 .skill-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
 
+/* --- PROGRESS BARS COMPÉTENCES --- */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.skill-item {
+    width: 100%;
+}
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+}
+.skill-progress-bg {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-main);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.skill-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 10px;
+    /* Transition pour un effet de remplissage fluide au chargement */
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* --- PROJETS RÉDUITS --- */
 .works-showcase { display: flex; flex-direction: column; gap: 40px; }
-/* Hauteur contrôlée pour les éléments */
-.work-showcase-item { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: white; border-radius: 12px; overflow: hidden; align-items: stretch; max-height: 400px; }
+
+/* 1. Suppression de max-height: 400px; pour que le texte ne soit plus coupé */
+.work-showcase-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    align-items: stretch;
+}
 .work-showcase-item.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
 .work-showcase-item.reverse > * { direction: ltr; }
 
-.work-visual { position: relative; overflow: hidden; height: 100%; }
-.work-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+/* 2. Ajout de Flexbox pour centrer les logos, d'un fond clair et d'un espacement (padding) */
+.work-visual {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    background-color: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* 3. Utilisation de contain au lieu de cover pour ne pas rogner les logos */
+.work-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.7s ease;
+}
 .work-showcase-item:hover .work-visual img { transform: scale(1.05); }
 
 /* Padding réduit de 60px à 35px */
@@ -168,7 +234,6 @@ nav {
 .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .tech-tags .tag { padding: 4px 10px; background: var(--bg-dark); color: white; font-size: 0.7rem; font-weight: 600; border-radius: 4px; }
 .work-details p { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.95rem; }
-
 /* --- CONTACT --- */
 .contact-container { max-width: 750px; margin: 0 auto; }
 .styled-form { padding: 40px; background: white; }
@@ -268,7 +333,7 @@ footer { background: var(--bg-dark); color: white; padding: 50px 0; text-align: 
     .grid-identity, .grid-reflection, .work-showcase-item, .work-showcase-item.reverse { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .work-showcase-item { max-height: none; }
-    .work-visual { height: 300px; }
+    .work-visual { height: 300px; padding: 20px; }
 }
 @media (max-width: 768px) {
     .skills-grid, .form-grid { grid-template-columns: 1fr; }

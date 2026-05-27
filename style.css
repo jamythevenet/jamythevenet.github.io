@@ -342,3 +342,28 @@ footer { background: var(--bg-dark); color: white; padding: 50px 0; text-align: 
     .section-title { font-size: 2.2rem; }
     .content-card, .work-details, .styled-form { padding: 25px; }
 }
+
+/* --- CITATION PORTFOLIO HEADER --- */
+.portfolio-quote {
+    max-width: 600px;
+    margin: 0 auto 40px auto; /* Centre la citation avec le reste du header */
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #E0E0E0; /* Couleur claire adaptée au fond sombre */
+    border-left: 4px solid var(--gold);
+    background: rgba(255, 255, 255, 0.05); /* Fond très légèrement transparent */
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    text-align: left; /* Garde le texte aligné à gauche contre la barre dorée */
+}
+
+.portfolio-quote span {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 10px;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
